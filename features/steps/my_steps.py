@@ -14,7 +14,9 @@ import time
 def step_given_i_am_on_career_page(context):
     service=Service(executable_path='/home/ananth/Downloads/chromedriver-linux64/chromedriver')
     chrome_options = webdriver.ChromeOptions()
+
     chrome_options.binary_location = '/usr/bin/google-chrome'
+    chrome_options.add_argument('--headless')
 
     # Set ChromeDriver path
 
