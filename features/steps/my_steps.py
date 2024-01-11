@@ -7,19 +7,22 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
-
+from selenium.webdriver.chrome.service import Service
 import time
 
 @given('I am on the Career landing page')
 def step_given_i_am_on_career_page(context):
-    # context.driver = webdriver.Chrome()
-    # context.driver.get("https://hades-stage.simpleenergy.in/")
-    # # context.driver.maximize_window()
-    chrome_options = Options()
-    chrome_options.add_argument('--headless')
-    chrome_options.add_argument('--disable-gpu')
+    service=Service(executable_path='/home/ananth/Downloads/chromedriver-linux64/chromedriver')
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = '/usr/bin/google-chrome'
 
-    context.driver = webdriver.Chrome(options=chrome_options)
+    # Set ChromeDriver path
+
+    # Create Chrome WebDriver with specified options
+    context.driver = webdriver.Chrome(service=service, options=chrome_options)
+
+    # Navigate to the desired URL
+    context.driver.get("https://hades-stage.simpleenergy.in/")
 
 @when('I wait for the job listings to load')
 def step_when_i_wait_for_job_listings(context):
@@ -370,9 +373,18 @@ def step_verify_empty_field_after_invalid_input(context):
 
 @given('I am on the application page')
 def step_given_i_am_on_application_page(context):
-    context.driver = webdriver.Chrome()
-    context.driver.maximize_window()
+    service=Service(executable_path='/home/ananth/Downloads/chromedriver-linux64/chromedriver')
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.binary_location = '/usr/bin/google-chrome'
+
+    # Set ChromeDriver path
+
+    # Create Chrome WebDriver with specified options
+    context.driver = webdriver.Chrome(service=service, options=chrome_options)
+
+    # Navigate to the desired URL
     context.driver.get("https://hades-stage.simpleenergy.in/apply/be7e88ca-9162-4103-83d0-fbd9261ea984")
+   
 
 @when('I wait for the email field to be clickable')
 def step_wait_for_email_field_clickable(context):
