@@ -6,14 +6,20 @@ from behave import given, when, then, step
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.chrome.options import Options
 
 import time
 
 @given('I am on the Career landing page')
 def step_given_i_am_on_career_page(context):
-    context.driver = webdriver.Chrome()
-    context.driver.get("https://hades-stage.simpleenergy.in/")
-    # context.driver.maximize_window()
+    # context.driver = webdriver.Chrome()
+    # context.driver.get("https://hades-stage.simpleenergy.in/")
+    # # context.driver.maximize_window()
+    chrome_options = Options()
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+
+    context.driver = webdriver.Chrome(options=chrome_options)
 
 @when('I wait for the job listings to load')
 def step_when_i_wait_for_job_listings(context):
