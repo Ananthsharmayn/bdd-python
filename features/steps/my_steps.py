@@ -18,7 +18,6 @@ def step_given_i_am_on_career_page(context):
     chrome_options.binary_location = '/usr/bin/google-chrome'
     chrome_options.add_argument('--headless')
 
-    # Set ChromeDriver path
 
     # Create Chrome WebDriver with specified options
     context.driver = webdriver.Chrome(service=service, options=chrome_options)
