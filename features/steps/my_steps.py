@@ -9,7 +9,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 import time
-#updated in remote
+
 @given('I am on the Career landing page')
 def step_given_i_am_on_career_page(context):
     service=Service(executable_path='/home/ananth/Downloads/chromedriver-linux64/chromedriver')
